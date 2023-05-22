@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "stack.h"
 #include <string.h>
+#include "queue.h"
 void TestStack1() {
 	ST st;
 	STInit(&st);
@@ -16,35 +17,25 @@ void TestStack1() {
 	}
 	STDestroy(&st);
 }
-bool isValid(char* s) {
-    ST st;
-    STInit(&st);
-    while (*s) {
-        if (*s == '(' || *s == '{' || *s == '[') {
-            STPush(&st, *s);
-        }
-        else {
-            if (STEmpty(&st)) {
-                return false;
-            }
-            char top = STTop(&st);
-            if (*s == ')' && top != '(' || *s == ']' && top != '[' || *s == '}' && top != '{') {
-                return false;
-            }
-            STPop(&st);
-        }
-        s++;
-    }
-    STDestroy(&st);
-    return STEmpty(&st) ? true : false;
-
+void TestQueue() {
+	Queue q;
+	QueueInit(&q);
+	QueuePush(&q, 1);
+	QueuePush(&q, 2);
+	QueuePush(&q, 3);
+	QueuePush(&q, 4);
+	QueuePush(&q, 5);
+	QueuePop(&q);
+	QueuePop(&q);
+	QueuePop(&q);
+	QueuePop(&q);
+	QueuePrint(&q);
+	QueueDestroy(&q);
 }
-int main() {
 
-    bool a=isValid("()");
-    if (a==true)
-    {
-        printf("%d", 1);
-    }
+
+
+int main() {
+	TestQueue();
 	return 0;
 }

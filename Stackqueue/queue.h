@@ -1,4 +1,7 @@
 #pragma once
+#include <stdlib.h>
+#include <assert.h>
+#include <stdbool.h>
 
 typedef int QDataType;
 typedef struct QueueNode
@@ -13,3 +16,19 @@ typedef struct Queue {
 }Queue;
 
 void QueueInit(Queue* queue);
+
+void QueueDestroy(Queue* queue);
+
+void QueuePush(Queue* queue, QDataType x);
+
+void QueuePop(Queue* queue);
+
+QDataType QueueFront(Queue* queue);
+
+QDataType QueueBack(Queue* queue);
+
+int QueueSize(Queue* queue);
+
+bool QueueEmpty(Queue* queue);
+
+void QueuePrint(Queue* queue);
